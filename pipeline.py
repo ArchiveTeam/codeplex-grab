@@ -55,7 +55,6 @@ TRACKER_ID = 'codeplex'
 TRACKER_HOST = 'legacy-api.arpa.li'
 MULTI_ITEM_SIZE = 1 # DO NOT CHANGE
 
-
 ###########################################################################
 # This section defines project-specific tasks.
 #
