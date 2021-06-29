@@ -49,7 +49,7 @@ if not WGET_AT:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = '20210629.02'
+VERSION = '20210629.03'
 USER_AGENT = 'Archive Team'
 TRACKER_ID = 'codeplex'
 TRACKER_HOST = 'legacy-api.arpa.li'
@@ -245,7 +245,7 @@ class WgetArgs(object):
 project = Project(
     title = 'CodePlex',
     project_html = '''
-    <img class="project-logo" alt="logo" src="" height="50px"/>
+    <img class="project-logo" alt="logo" src="https://wiki.archiveteam.org/images/c/cf/Codeplex-logo.png" height="50px"/>
     <h2>codeplex.com <span class="links"><a href="https://codeplex.com/">Website</a> &middot; <a href="http://tracker.archiveteam.org/codeplex/">Leaderboard</a></span></h2>
     '''
 )
