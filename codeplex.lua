@@ -160,10 +160,12 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       check("https://codeplexarchive.blob.core.windows.net/archive/projects/" .. item_value .. "/" .. item_value .. ".zip")
       check("https://" .. item_value .. ".codeplex.com/")
       check("https://archive.codeplex.com/metadata/" .. item_value .. ".json")
+    elseif string.match(url, "/metadata/.+%.json$") then
+      item_value = JSON:decode(html)["ProjectName"]
+      ids[item_value] = true
       check("https://archive.codeplex.com/projects/" .. item_value .. "/discussions/discussions.json")
       check("https://archive.codeplex.com/projects/" .. item_value .. "/issues/issues.json")
-    end
-    if string.match(url, "/projects/") and string.match(url, "%.json$") then
+    elseif string.match(url, "/projects/.+%.json$") then
       local sort = string.match(url, "([^%./]+)%.json$")
       for _, d in pairs(JSON:decode(html)) do
         local id = d["Id"]
