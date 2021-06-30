@@ -161,7 +161,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       check("https://" .. item_value .. ".codeplex.com/")
       check("https://archive.codeplex.com/metadata/" .. item_value .. ".json")
     elseif string.match(url, "/metadata/.+%.json$") then
-      item_value = JSON:decode(html)["ProjectName"]
+      item_value = string.match(html, '"ProjectName"%s*:%s*"([^"]+)"')
       ids[item_value] = true
       check("https://archive.codeplex.com/projects/" .. item_value .. "/discussions/discussions.json")
       check("https://archive.codeplex.com/projects/" .. item_value .. "/issues/issues.json")
