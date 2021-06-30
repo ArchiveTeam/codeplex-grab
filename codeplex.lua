@@ -177,7 +177,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       end
     end
     html = string.gsub(html, '\\"', '"')
-    for newurl in string.gmatch(string.gsub(html, "&quot;", '"'), '([^"]+)') do
+    --[[for newurl in string.gmatch(string.gsub(html, "&quot;", '"'), '([^"]+)') do
       checknewurl(newurl)
     end
     for newurl in string.gmatch(string.gsub(html, "&#039;", "'"), "([^']+)") do
@@ -194,7 +194,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
     end
     for newurl in string.gmatch(html, "%(([^%)]+)%)") do
       checknewurl(newurl)
-    end
+    end]]
   end
 
   return urls
