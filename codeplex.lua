@@ -157,12 +157,12 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
   if allowed(url, nil) and status_code == 200 and not string.match(url, "%.zip$") then
     html = read_file(file)
     if string.match(url, "%?p=") then
-      check("https://codeplexarchive.blob.core.windows.net/archive/projects/" .. item_value .. "/" .. item_value .. ".zip")
       check("https://" .. item_value .. ".codeplex.com/")
       check("https://archive.codeplex.com/metadata/" .. item_value .. ".json")
     elseif string.match(url, "/metadata/.+%.json$") then
       item_value = string.match(html, '"ProjectName"%s*:%s*"([^"]+)"')
       ids[item_value] = true
+      check("https://codeplexarchive.blob.core.windows.net/archive/projects/" .. item_value .. "/" .. item_value .. ".zip")
       check("https://archive.codeplex.com/projects/" .. item_value .. "/discussions/discussions.json")
       check("https://archive.codeplex.com/projects/" .. item_value .. "/issues/issues.json")
     elseif string.match(url, "/projects/.+%.json$") then
