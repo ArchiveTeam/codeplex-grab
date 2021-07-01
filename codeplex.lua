@@ -232,10 +232,10 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     downloaded[url["url"]] = true
   end
 
-  if abortgrab then
+  --[[if abortgrab then
     abort_item()
     return wget.actions.ABORT
-  end
+  end]]
 
   if status_code == 0
     or (status_code >= 400 and status_code ~= 404) then
@@ -250,7 +250,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
       io.stdout:flush()
       tries = 0
       abort_item()
-      return wget.actions.ABORT
+      return wget.actions.EXIT
     else
       os.execute("sleep " .. math.floor(math.pow(2, tries)))
       tries = tries + 1
@@ -303,7 +303,7 @@ end
 wget.callbacks.before_exit = function(exit_status, exit_status_string)
   if abortgrab then
     abort_item()
-    return wget.exits.IO_FAIL
+    --return wget.exits.IO_FAIL
   end
   return exit_status
 end
