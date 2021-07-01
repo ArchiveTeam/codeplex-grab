@@ -219,14 +219,6 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
   io.stdout:write(url_count .. "=" .. status_code .. " " .. url["url"] .. "  \n")
   io.stdout:flush()
 
-  if status_code == 404 and
-    (
-      string.match(url["url"], "vthumb.+%.jpg$")
-      or string.match(url["url"], "%.zip$")
-    ) then
-    return wget.actions.EXIT
-  end
-
   if status_code >= 300 and status_code <= 399 then
     local newloc = urlparse.absolute(url["url"], http_stat["newloc"])
     if downloaded[newloc] or addedtolist[newloc]
